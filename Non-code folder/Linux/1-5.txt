@@ -1,0 +1,54 @@
+  188  mkdir FinalExam_Linux
+  189  cd FinalExam_Linux/
+  190  cat > Домашние_Животные
+  191  cat > Вьючные животные
+  192  cat > Вьючные_животные
+  193  cat Домашние_Животные Вьючные_животные > Друзья_человека
+  194  cat Друзья_человека
+  195  mv Друзья_человека ДрузьяЧеловека
+  196  ls
+  197  cat ДрузьяЧеловека
+  198  #1st task DONE!
+  199  mkdir 1task
+  200  mv ДрузьяЧеловека /1task
+  201  sudo -i
+  202  sudo mb ДрузьяЧеловека /1task
+  203  sudo mv ДрузьяЧеловека /1task
+  204  ls
+  205  cd 1task/
+  206  ls
+  207  cd ..
+  208  cd
+  209  ls
+  210  #Oopsie
+  211  cd FinalExam_Linux/
+  212  ls
+  213  cat Домашние_Животные Вьючные_животные > ДрузьяЧеловека
+  214  ls
+  215  sudo mv ДрузьяЧеловека /1task/
+  216  sudo mv ДрузьяЧеловека /1task
+  217  ls
+  218  cd 1task/
+  219  ls
+  220  cd ..
+  221  cat Домашние_Животные Вьючные_животные > ДрузьяЧеловека
+  222  sudo mv ДрузьяЧеловека ~/FinalExam_Linux/1task
+  223  cd 1task/
+  224  ls
+  225  #Finnaly 2nd one is DONE!
+  226  sudo apt install mysql-server mysql-client
+  227  sudo apt-get update
+  228  #3d task DON!
+  229  #3d task DONE!*
+  230  wget https://dev.mysql.com/get/mysql-apt-config_0.8.24-1_all.deb
+  231  sudo dpkg -i mysql-apt-config_0.8.24-1_all.deb
+  232  apt-key
+  233  ls
+  234  sudo apt-key add ~/FinalExam_Linux/1task/mysql-apt-config_0.8.24-1_all.deb
+  235  sudo add-apt-repository 'deb http://repo.mysql.com/apt/ubuntu/ bionic mysql-apt-config'
+  236  sudo apt-get update
+  237  sudo apt install mysql-server
+  238  #Now I gonna delete
+  239  sudo dpkg -s mysql-server
+  240  sudo dpkg -r mysql-server
+  241  history
