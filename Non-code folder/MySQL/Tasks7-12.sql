@@ -1,8 +1,8 @@
 # В подключенном MySQL репозитории создать базу данных “Друзья человека”
-CREATE DATABASE 'Друзья человека';
+CREATE DATABASE `Друзья человека`;
 
 # Создать таблицы с иерархией из диаграммы в БД
-USE 'Друзья человека';
+USE `Друзья человека`;
 
 CREATE TABLE Dogs
 (
@@ -75,17 +75,17 @@ VALUES(1016,'Verblyud', 'trot', date'2015-08-11'), (1017, 'Camel', 'come up', da
 INSERT INTO Donkeys (id, Name, TrainingCommands, DateOfBirth)
 VALUES(1018,'Osel', 'run', date'2021-12-08'), (1019, 'Lishniy', 'go away', date'2018-06-11'), (1020, 'Ishak', 'come here, go', date'2021-01-01');
 
-# Удалив из таблицы верблюдов, т.к. верблюдов решили перевезти в другой питомник на зимовку. Объединить таблицы Horses, и Donkeys в одну таблицу.
+# Удалить из таблицы верблюдов, т.к. верблюдов решили перевезти в другой питомник на зимовку. Объединить таблицы Horses, и Donkeys в одну таблицу.
 TRUNCATE TABLE Camels;
 
 SELECT * FROM Horses
 UNION SELECT * FROM Donkeys
-AS 'Pack animals';
+AS `Pack animals`;
 
 # Создать новую таблицу “молодые животные” в которую попадут все животные старше 1 года,
 # но младше 3 лет и в отдельном столбце с точностью до месяца подсчитать возраст животных в новой таблице
 
-CREATE TABLE 'Young of domestic animals'
+CREATE TABLE `Young of domestic animals`
 SELECT id, Name, TrainingCommands, DateOfBirth,
 (YEAR(CURRENT_DATE)-YEAR(DateOfBirth)) - (RIGHT(CURRENT_DATE,5)<RIGHT(DateOfBirth,5)) AS Возраст
 FROM Dogs
@@ -131,5 +131,5 @@ UNION ALL SELECT * FROM Hamsters
 UNION ALL SELECT * FROM Horses
 UNION ALL SELECT * FROM Camels
 UNION ALL SELECT * FROM Donkeys)
-AS 'All of domestic animals'
+AS `All of domestic animals`
 ORDER BY id;
