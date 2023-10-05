@@ -61,14 +61,16 @@ def ViewAnimals():
 def AddCommand():
     r = csv.reader(open('data.csv'))
     lines = list(r)
-    # print(lines)
-    sname = str(input('Enter name of animal: '))  # Заменить поиск по ID, на поиск по имени
+    sname = str(input('Enter name of animal: '))
     sline = SearchRowByName(sname)
-    edited_note = str(input('Enter edited note: '))  # нужно добавить к имеющимся командам, чтобы не переписывать каждый
-    # раз
-    lines[sline][4] += edited_note
-    # lines[e1][2] = current_date
-    # lines[e1][3] = current_time
+    if sline is None:
+        print('Name not found. Returning to menu.')
+        return
+    edited_note = str(input('Enter edited note: '))
+    if lines[sline][4]:
+        lines[sline][4] += ", " + edited_note
+    else:
+        lines[sline][4] += edited_note
     writer = csv.writer(open('data.csv', 'w', encoding='UTF8', newline=''))
     writer.writerows(lines)
 
@@ -82,8 +84,7 @@ def SearchRowByName(sname):
 
 
 
-# Добавить проверку, на наличие информации в столбце Commands, чтобы при заполненном столбце перед новой командой
-# ставилась запятая с пробелом
+
 
 # Реализовать поиск по конкретному столбцу "Name" + Перевести пользователя в меню с ошибкой('Нет животного с таким
 # именем')
