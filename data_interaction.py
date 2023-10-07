@@ -26,16 +26,14 @@ def Create():
 # Append data.csv by adding new note(row)
 def AddAnimal():
     r = csv.reader(open('data.csv'))
-    typeof = input('Is it domestic or pack animal? ')
+    # typeof = input('Is it domestic or pack animal? ')
     animal = input('What animal is this? ')
+    typeof = ClassifyAnimal(animal)
     name = input('What is the name of this animal? ')
     age = input('How old is this animal? ')
     commands = input('What commands does this animal know? ')
     lines = list(r)
     # animal_id = len(lines) # Через это можно сделать вывод общего кол-ва животных
-    # Create the dictionary (=row)
-    # Добавить словарь, для определения вьючного/домашнего животного, и последующего автоматического определения его
-    # типа
     row = {'Type of animal': typeof, 'Animal': animal, 'Name': name, 'Age': age, 'Commands': commands}
 
     # Open the CSV file in "append" mode
@@ -47,7 +45,24 @@ def AddAnimal():
         writer.writerow(row)
 
 
-# Function for printing out existing notes
+# Function for classification type of animal by 'animal'
+def ClassifyAnimal(animal):
+    animal_dict = {
+        'horse': 'Pack',
+        'camel': 'Pack',
+        'donkey': 'Pack',
+        'cat': 'Domestic',
+        'dog': 'Domestic',
+        'hamster': 'Domestic'
+    }
+    animal_type = animal_dict.get(animal.lower(), None)
+    if animal_type is None:
+        print(f'{animal} cannot be classified.')
+    else:
+        return animal_type
+
+
+# Function for printing out listed animals
 def ViewAnimals():
     r = csv.reader(open('data.csv'))
     lines = list(r)
@@ -57,7 +72,7 @@ def ViewAnimals():
     print(table)
 
 
-# Function for editing selected note by id
+# Function for adding command(s) by animal name
 def AddCommand():
     r = csv.reader(open('data.csv'))
     lines = list(r)
@@ -75,6 +90,7 @@ def AddCommand():
     writer.writerows(lines)
 
 
+# Function for searching row id in column 'Name' by entered animal name
 def SearchRowByName(sname):
     with open('data.csv', newline='') as csvfile:
         reader = csv.reader(csvfile)
@@ -82,12 +98,6 @@ def SearchRowByName(sname):
             if sname == row[2]:
                 return i
 
-
-
-
-
-# Реализовать поиск по конкретному столбцу "Name" + Перевести пользователя в меню с ошибкой('Нет животного с таким
-# именем')
 
 # Function for deleting selected by id note
 # def RemoveAnimal():
@@ -141,7 +151,7 @@ def SearchRowByName(sname):
 
 
 # Create()
-# AddAnimal()
 ViewAnimals()
-AddCommand()
+AddAnimal()
+# AddCommand()
 ViewAnimals()
