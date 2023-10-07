@@ -17,14 +17,6 @@ menu_options = {
 }
 
 
-# view_options = {
-#     1: cv1,
-#     2: cv2,
-#     3: cv3,
-#     4: cv4,
-# }
-
-
 def print_menu():
     for key in menu_options.keys():
         print(key, '--', menu_options[key])

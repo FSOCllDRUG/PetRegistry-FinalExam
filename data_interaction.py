@@ -101,13 +101,16 @@ def SearchRowByName(sname):
                 return i
 
 
-# Function for deleting selected by id note
 def RemoveAnimalByName():
     r = csv.reader(open('data.csv'))
     lines = list(r)
     # print(lines)
     sname = str(input('Enter name of animal to delete: '))
-    lines.pop(SearchRowByName(sname))
+    index = SearchRowByName(sname)
+    if index is None:
+        print("Name not found")
+        return
+    lines.pop(index)
     writer = csv.writer(open('data.csv', 'w', encoding='UTF8', newline=''))
     writer.writerows(lines)
 
