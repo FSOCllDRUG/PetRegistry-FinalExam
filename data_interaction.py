@@ -64,7 +64,7 @@ def ClassifyAnimal(animal):
         return animal_type
 
 
-# Function for printing out listed animals
+# Function for printing out all listed animals
 def ViewAnimals():
     r = csv.reader(open('data.csv'))
     lines = list(r)
@@ -126,3 +126,5 @@ def ViewCommand():
         print(f"{sname} doesnt know any commands yet.")
     writer = csv.writer(open('data.csv', 'w', encoding='UTF8', newline=''))
     writer.writerows(lines)
+
+    # To check Counter value call : print(c.count)
